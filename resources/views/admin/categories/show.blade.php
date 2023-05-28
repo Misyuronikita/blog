@@ -22,39 +22,28 @@
 
         <!-- Main content -->
         <section class="content">
-            <div class="container-fluid">
+            <div class="container-fluid" style="text-align: center;">
 
                 <!-- Small boxes (Stat box) -->
                 <div class="row">
-                    <div class="col-5">
+                    <div class="col-4" >
                         <div class="row">
-                            <div class="col-12">
+                            <div class="col-8">
                                 <div class="card">
                                     <div class="card-header">
-                                        <h3 class="card-title">Категории</h3>
+                                        <h3 class="card-title">{{$category->title}}</h3>
                                     </div>
                                     <!-- /.card-header -->
                                     <div class="card-body table-responsive p-0">
-                                        <table class="table table-hover text-nowrap">
-                                            <thead>
-                                            <tr>
-                                                <th>ID</th>
-                                                <th>Название</th>
-                                                <th>Дата создания</th>
-                                                <th>Просмотреть</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            @foreach($categories as $category)
-                                                <tr>
-                                                    <td>{{$category->id}}</td>
-                                                    <td>{{$category->title}}</td>
-                                                    <td>{{($category->created_at)->format("F j, Y")}}</td>
-                                                    <td><a href="{{route('admin.categories.show', $category->id)}}"><i class="nav-icon fas fa-search"></i></a></td>
-                                                </tr>
-                                            @endforeach
-                                            </tbody>
-                                        </table>
+                                        <div class="position-relative p-3 bg-gray" style="height: 180px;">
+                                            <div class="ribbon-wrapper ribbon-lg">
+                                                <div class="ribbon bg-info">
+                                                    Категория №{{$category->id}}
+                                                </div>
+                                            </div>
+                                            {{$category->title}} <br>
+                                            <small>{{($category->created_at)->format("F j, Y")}}</small>
+                                        </div>
                                     </div>
                                     <!-- /.card-body -->
                                 </div>
@@ -62,9 +51,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-1">
-                    <a href="{{route('admin.categories.create')}}" class="btn btn-block btn-primary">Создать</a>
                 </div>
                 <!-- /.row -->
             </div><!-- /.container-fluid -->
