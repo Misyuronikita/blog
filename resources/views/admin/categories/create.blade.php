@@ -7,11 +7,11 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Dashboard</h1>
+                        <h1 class="m-0">Добавление категорий</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{{route('main.index')}}">Home</a></li>
                             <li class="breadcrumb-item active">Dashboard</li>
                         </ol>
                     </div><!-- /.col -->
@@ -25,12 +25,16 @@
             <div class="container-fluid">
                 <!-- Small boxes (Stat box) -->
                 <div class="row">
-                    <div class="col-1">
-                        <a href="{{route('admin.categories.create')}}" class="btn btn-block btn-primary">Создать</a>
-                    </div>
-                    <div class="col-12">
-                        Categories
-                    </div>
+                    <form action="{{route('admin.categories.store')}}" method="post" class="col-4">
+                        @csrf
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="title" placeholder="Введите название">
+                        </div>
+                        @error('title')
+                        <div class="text-danger mb-3">{{$message}}<strong>*</strong></div>
+                        @enderror
+                        <input type="submit" class="btn-primary col-3" value="Создать" style="border-radius: 5px;">
+                    </form>
                 </div>
                 <!-- /.row -->
             </div><!-- /.container-fluid -->

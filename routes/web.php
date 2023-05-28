@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(['namespace' => 'App\Http\Controllers\Main\\'], function () {
-    Route::get('/', 'IndexController');
+    Route::get('/', 'IndexController')->name('main.index');
 });
 
 Route::group(['namespace'=>'App\Http\Controllers\Admin', 'prefix' => 'admin'], function (){
@@ -23,6 +23,8 @@ Route::group(['namespace'=>'App\Http\Controllers\Admin', 'prefix' => 'admin'], f
     });
     Route::group(['namespace' => 'Category', 'prefix' => 'categories'], function () {
         Route::get('/', 'IndexController')->name('admin.categories.index');
+        Route::get('/create', 'CreateController')->name('admin.categories.create');
+        Route::post('/', 'StoreController')->name('admin.categories.store');
     });
 });
 
