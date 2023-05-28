@@ -23,14 +23,46 @@
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
+
                 <!-- Small boxes (Stat box) -->
                 <div class="row">
-                    <div class="col-1">
-                        <a href="{{route('admin.categories.create')}}" class="btn btn-block btn-primary">Создать</a>
+                    <div class="col-4">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h3 class="card-title">Категории</h3>
+                                    </div>
+                                    <!-- /.card-header -->
+                                    <div class="card-body table-responsive p-0">
+                                        <table class="table table-hover text-nowrap">
+                                            <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Название</th>
+                                                <th>Дата создания</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            @foreach($categories as $category)
+                                                <tr>
+                                                    <td>{{$category->id}}</td>
+                                                    <td>{{$category->title}}</td>
+                                                    <td>{{($category->created_at)->format("F j, Y")}}</td>
+                                                </tr>
+                                            @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!-- /.card-body -->
+                                </div>
+                                <!-- /.card -->
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-12">
-                        Categories
-                    </div>
+                </div>
+                <div class="col-1">
+                    <a href="{{route('admin.categories.create')}}" class="btn btn-block btn-primary">Создать</a>
                 </div>
                 <!-- /.row -->
             </div><!-- /.container-fluid -->

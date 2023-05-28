@@ -13,6 +13,6 @@ class StoreController extends Controller
     {
         $category = $storeRequest->validated();
         Category::firstOrCreate($category);
-        return view('admin.categories.index');
+        return redirect()->route('admin.categories.index');
     }
 }
