@@ -26,7 +26,7 @@
 
                 <!-- Small boxes (Stat box) -->
                 <div class="row">
-                    <div class="col-5">
+                    <div class="col-6">
                         <div class="row">
                             <div class="col-12">
                                 <div class="card">
@@ -38,19 +38,21 @@
                                         <table class="table table-hover text-nowrap">
                                             <thead>
                                             <tr>
-                                                <th>ID</th>
-                                                <th>Название</th>
-                                                <th>Дата создания</th>
-                                                <th>Просмотреть</th>
+                                                <th class="text-center">ID</th>
+                                                <th class="text-center">Название</th>
+                                                <th class="text-center">Дата создания</th>
+                                                <th class="text-center">Просмотреть</th>
+                                                <th class="text-center">Изменить</th>
                                             </tr>
                                             </thead>
                                             <tbody>
                                             @foreach($categories as $category)
                                                 <tr>
-                                                    <td>{{$category->id}}</td>
-                                                    <td>{{$category->title}}</td>
-                                                    <td>{{($category->created_at)->format("F j, Y")}}</td>
-                                                    <td><a href="{{route('admin.categories.show', $category->id)}}"><i class="nav-icon fas fa-search"></i></a></td>
+                                                    <td class="text-center">{{$category->id}}</td>
+                                                    <td class="text-center">{{$category->title}}</td>
+                                                    <td class="text-center">{{($category->created_at)->format("F j, Y")}}</td>
+                                                    <td class="text-center"><a href="{{route('admin.categories.show', $category->id)}}"><i class="nav-icon fas fa-search"></i></a></td>
+                                                    <td class="text-center"><a href="{{route('admin.categories.edit', $category->id)}}" class="text-success"><i class="fas fa-pen"></i></a></td>
                                                 </tr>
                                             @endforeach
                                             </tbody>
