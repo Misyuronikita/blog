@@ -9,6 +9,7 @@
                     <div class="col-sm-6 d-flex align-items-center">
                         <h1 class="m-0 mr-2">Dashboard</h1>
                         <a href="{{route('admin.categories.edit', $category->id)}}" class="text-success"><i class="fas fa-pen"></i></a>
+                        <a href="{{route('admin.categories.delete', $category->id)}}" class="text-danger ml-2"><i class="far fa-trash-alt"></i></a>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
