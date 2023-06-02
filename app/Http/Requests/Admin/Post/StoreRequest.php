@@ -22,14 +22,20 @@ class StoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => ['required', 'string']
+            'title' => ['required', 'string'],
+            'content' => ['required', 'string'],
+            'preview_image' => ['required', 'file'],
+            'main_image' => ['required', 'file'],
         ];
     }
 
     public function messages()
     {
         return [
-            'title' => 'Необходимо заполнить это поле'
+            'title' => 'Необходимо заполнить это поле',
+            'content' => 'Необходимо заполнить это поле',
+            'preview_image' => 'Необходимо выбрать файл',
+            'main_image' => 'Необходимо выбрать файл',
         ];
     }
 }

@@ -25,16 +25,51 @@
             <div class="container-fluid">
                 <!-- Small boxes (Stat box) -->
                 <div class="row">
-                    <form action="{{route('admin.posts.store')}}" method="post" class="col-4">
-                        @csrf
-                        <div class="form-group">
-                            <input type="text" class="form-control" name="title" placeholder="Введите название">
-                        </div>
-                        @error('title')
-                        <div class="text-danger mb-3">{{$message}}<strong>*</strong></div>
-                        @enderror
-                        <input type="submit" class="btn-primary col-3" value="Создать" style="border-radius: 5px;">
-                    </form>
+                    <div class="col-12">
+                        <form action="{{route('admin.posts.store')}}" method="post" enctype="multipart/form-data">
+                            @csrf
+                            <div class="form-group w-25">
+                                <input type="text" class="form-control" name="title" placeholder="Введите название" value="{{old('title')}}">
+                                @error('title')
+                                <div class="text-danger mb-3">{{$message}}<strong>*</strong></div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <textarea id="summernote" name="content">{{old('content')}}</textarea>
+                                @error('content')
+                                <div class="text-danger mb-3">{{$message}}<strong>*</strong></div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputFile">Выбор превью</label>
+                                <div class="input-group">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" name="preview_image">
+                                        <label class="custom-file-label">Выбрать файл</label>
+                                    </div>
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">Загрузить</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputFile">Выбор главного изображения</label>
+                                <div class="input-group">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" name="main_image">
+                                        <label class="custom-file-label">Выбрать файл</label>
+                                    </div>
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">Загрузить</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-primary" value="Создать"
+                                       style="border-radius: 5px;">
+                            </div>
+                        </form>
+                    </div>
                 </div>
                 <!-- /.row -->
             </div><!-- /.container-fluid -->
