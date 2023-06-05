@@ -26,16 +26,21 @@ class StoreRequest extends FormRequest
             'content' => ['required', 'string'],
             'preview_image' => ['required', 'file'],
             'main_image' => ['required', 'file'],
+            'category_id' => ['required', 'integer' ,'exists:categories,id'],
+            'tag_ids' => ['nullable', 'array'],
+            'tag_ids.*' => ['nullable', 'integer', 'exists:tags,id'],
         ];
     }
 
     public function messages()
     {
         return [
-            'title' => 'Необходимо заполнить это поле',
-            'content' => 'Необходимо заполнить это поле',
-            'preview_image' => 'Необходимо выбрать файл',
-            'main_image' => 'Необходимо выбрать файл',
+            'title' => 'Необходимо придумать название',
+            'content' => 'Необходимо добавить наполнение',
+            'preview_image' => 'Необходимо выбрать превью',
+            'main_image' => 'Необходимо выбрать главное изображение',
+            'category_id' => 'Необходимо выбрать категорию',
+            'tags_ids' => 'Необходимо выбрать тэги'
         ];
     }
 }

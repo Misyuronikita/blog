@@ -20,6 +20,8 @@
     <link rel="stylesheet" href="{{asset('plugins/overlayScrollbars/css/OverlayScrollbars.min.css')}}">
     <!-- Daterange picker -->
     <link rel="stylesheet" href="{{asset('plugins/daterangepicker/daterangepicker.css')}}">
+
+    <link rel="stylesheet" href="{{asset('plugins/select2/css/select2.min.css')}}">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -74,6 +76,7 @@
 <script src="{{asset('plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
 <script src="{{asset('plugins/bs-custom-file-input/bs-custom-file-input.min.js')}}"></script>
 <script src="{{asset('dist/js/adminlte.js')}}"></script>
+<script src="{{asset('plugins/select2/js/select2.full.min.js')}}"></script>
 <script>
     $(document).ready(function () {
         $('#summernote').summernote({
@@ -92,7 +95,11 @@
     $(function () {
         bsCustomFileInput.init();
     });
+    $('.select2').select2()
 </script>
-
+<style>.custom-file-input:lang(en) ~ .custom-file-label::after {
+        content: "...";
+    }
+</style>
 </body>
 </html>
