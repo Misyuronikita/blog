@@ -22,14 +22,25 @@ class UpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => ['required', 'string']
+            'title' => ['required', 'string'],
+            'content' => ['required', 'string'],
+            'preview_image' => ['nullable', 'file'],
+            'main_image' => ['nullable', 'file'],
+            'category_id' => ['required', 'integer' ,'exists:categories,id'],
+            'tag_ids' => ['nullable', 'array'],
+            'tag_ids.*' => ['nullable', 'integer', 'exists:tags,id'],
         ];
     }
 
     public function messages()
     {
         return [
-            'title' => 'Необходимо заполнить это поле'
+            'title' => 'Необходимо заполнить это поле',
+            'content' => 'Необходимо добавить наполнение',
+            'preview_image' => 'Необходимо выбрать превью',
+            'main_image' => 'Необходимо выбрать главное изображение',
+            'category_id' => 'Необходимо выбрать категорию',
+            'tags_ids' => 'Необходимо выбрать тэги'
         ];
     }
 }
